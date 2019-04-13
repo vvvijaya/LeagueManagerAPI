@@ -7,7 +7,7 @@ var assert = require('assert')
 var bodyparser = require('body-parser')
 var html = require('http')
 
-var routes = require('./routes/index')
+
 var player = require('./routes/player')
 var league = require('./routes/league')
 
