@@ -1,7 +1,7 @@
 
 var Player = require('../models/player')
 
-//GET list of all authors 
+//GET list of all players 
 /*exports.player_list = (req, res) => {
     res.send('NOT IMPLEMENTED')
 }

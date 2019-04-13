@@ -7,7 +7,7 @@ var mongoose = require('mongoose')
 var parser = require('body-parser')
 var urlParser = parser.urlencoded({extended: true})
 
-router.get('/', (req, res) => { 
+router.get('/', (req, res) => {   
     var limitRows = parseInt(req.query.limit) || 0    
     mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true}, (err, client) => {
        assert.equal(null, err)
@@ -18,8 +18,7 @@ router.get('/', (req, res) => {
         res.json(docs)
         client.close()
        })              
-   })
-   
+   })   
 })
 
 router.get('/find', urlParser ,(req, res) => { 
