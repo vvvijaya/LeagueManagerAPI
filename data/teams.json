@@ -1,0 +1,5 @@
+[
+    {"team_id": 1, "team_name": "Manchester United", "league_id":1}, 
+    {"team_id": 2, "team_name": "Real Madrid", "league_id": 2},
+    {"team_id": 3, "team_name": "Atlanta United", "league_id": 3}
+]

@@ -1,0 +1,20 @@
+{
+    "name": "app-service-hello-world",
+    "description": "Simple Hello World Node.js sample for Azure App Service",
+    "version": "0.0.1",
+    "private": true,
+    "license": "MIT",
+    "author": "Microsoft",
+    "scripts": {
+        "start": "node index.js"
+    },
+    "dependencies": {
+        "assert": "^1.4.1",
+        "body-parser": "^1.18.3",
+        "dotenv": "^7.0.0",
+        "express": "^4.16.4",
+        "express-validator": "^5.3.1",
+        "mongodb": "^3.2.2",
+        "mongoose": "^5.4.20"
+    }
+}

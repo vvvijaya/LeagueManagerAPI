@@ -1,0 +1,5 @@
+[
+    {"league_id": "1", "name": "Premier League", "country": "England" },
+    {"league_id":2, "name": "La Liga", "country": "Spain" },
+    {"league_id": 3, "name": "Major League Soccer", "country": "United States"}
+]
