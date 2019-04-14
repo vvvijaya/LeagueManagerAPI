@@ -1,6 +1,6 @@
-# Node.js Hello World
+# Node.js Football League API
 
-This sample demonstrates a tiny Hello World node.js app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web).
+This sample demonstrates a REST API app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web).
 
 # Contributing
 
