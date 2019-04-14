@@ -2,12 +2,14 @@ var express= require('express')
 var router = express.Router() 
 //var app = express() 
 var assert = require('assert')
+const mongo = require('mongodb')
 var mongoClient = require("mongodb").MongoClient;
 var mongoose = require('mongoose')
 var parser = require('body-parser')
 var urlParser = parser.urlencoded({extended: true})
 
-router.get('/', (req, res) => {   
+router.get('/', (req, res) => { 
+  
     var limitRows = parseInt(req.query.limit) || 0    
     mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true}, (err, client) => {
        assert.equal(null, err)
@@ -47,8 +49,8 @@ router.get('/find', urlParser ,(req, res) => {
 
 router.post('/', (req, res) => {
     //console.log('creating player..');
-    mongoClient.connect(process.env.DB_CONN,  (err, client) => {
-        assert.equal(null, err)
+    mongoClient.connect(process.env.DB_CONN, {useNewUrlParser:true}  ,(err, client) => {
+       assert.equal(null, err)
        try{
         var db = client.db('LeagueDB')
         var cursor = db.collection('players')
@@ -60,12 +62,11 @@ router.post('/', (req, res) => {
                 "matches": req.body.matches,
                 "height": req.body.height,
                 "weight": req.body.weight
+            },
+            (err, result)=>{
+                res.status(200).send(result.ops)                
             }
-        ).then( (result) => { 
-            res.send( result.insertedCount.toString() + ' player created successfully.') 
-            } 
-        )
-        //res.send("Player created successfully!!")
+        )        
        }
        catch(e){
            res.sendStatus(500)
@@ -74,17 +75,14 @@ router.post('/', (req, res) => {
 
 })
 
-router.put('/', (req, res) => {
-    console.log('creating player..');
+router.put('/', (req, res) => {    
     var id = req.body._uid || ''
     var name = req.body.name || ''
     var dob = Date.parse(req.body.dob) || new Date('1/1/1970')
     var goals = parseInt(req.body.goals)  || 0
     var matches = parseInt(req.body.matches) || 0
     var height = parseInt(req.body.height) || 0
-    var weight = parseInt(req.body.weight) || 0
-
-    console.log(name, weight);
+    var weight = parseInt(req.body.weight) || 0  
 
     if(id == null || name == null)
     assert.fail('Invalid data provided.')
@@ -110,6 +108,22 @@ router.put('/', (req, res) => {
             }
         )        
     })
+})
+
+router.delete('/', (req, res)=>{
+    var id = req.body._id || ''
+    if(id=='') 
+    assert.fail('id is a required field')
+
+    mongoClient.connect(process.env.DB_CONN, { useNewUrlParser: true } ,(err, client) => {
+        var db = client.db('LeagueDB')
+        db.collection('players').deleteOne(
+            {"_id": new mongo.ObjectID(id) }, 
+            (err, result)=>{
+            if(err==null)
+            res.status(200).send('player deleted')
+        })
+    })       
 })
 
 module.exports = router; 

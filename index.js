@@ -1,15 +1,16 @@
-var express = require("express")
+const express = require("express")
 var app = express()
-var mongoClient = require("mongodb").MongoClient
-var mongoose = require("mongoose")
+const mongoClient = require("mongodb").MongoClient
+const mongoose = require("mongoose")
 const port = process.env.PORT || 1337
 var assert = require('assert')
-var bodyparser = require('body-parser')
-var html = require('http')
+const bodyparser = require('body-parser')
+const html = require('http')
 
 
-var player = require('./routes/player')
-var league = require('./routes/league')
+const player = require('./routes/player')
+const league = require('./routes/league')
+const errorHandler = require('./middleware/errorhandler')
 
 app.use(bodyparser.json())
 app.use(bodyparser.urlencoded())
@@ -35,10 +36,18 @@ app.use("", (req, res)=> {
    `)
 })
 
+/*
 process.on('uncaughtException', (err)=> {
     console.error('There was an uncaught error')
     process.exit(1)
 })
+*/
+
+/*app.use(function(err,req,res,next){
+    res.status(500).send('Error processing request.'+ err)
+})*/
+
+app.use(errorHandler)
 
 app.listen(port, () => {
     console.log("Server running on port", port)
