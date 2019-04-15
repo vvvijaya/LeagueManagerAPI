@@ -2,7 +2,7 @@
 
 This sample demonstrates a REST API app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web).
 
-Hosted in Azure(https://leaguemanagernodeapp.azurewebsites.net/).
+Hosted in Azure(https://leaguemanagerapi.azurewebsites.net/).
 
 # Contributing
 
