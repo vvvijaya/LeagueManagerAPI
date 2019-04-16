@@ -4,7 +4,7 @@ This sample demonstrates a REST API app for [App Service Web App](https://docs.m
 
 Tech Used: Node.js, Azure Web Apps, Azure Cosmos DB - Mongo, Mocha/Chai, Open API spec.  
 
-Feqtures Roadmap: 
+Features Roadmap: 
 1. Add news section backend. 
 2. Build Front end. 
 3. Migrate to Containers based deploy model (Docker, Kubernetes, Terraform)  
