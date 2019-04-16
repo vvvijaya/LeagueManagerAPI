@@ -1,6 +1,8 @@
 # Node.js Football League API
 
-This sample demonstrates a REST API app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web).
+This sample demonstrates a REST API app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web). This API simulates the backend functionality of a Football focused website which presents news, stats of major soccer teams. 
+
+Tech Used: Node.js, Azure Web Apps, Azure Cosmos DB - Mongo, Mocha/Chai, Open API. 
 
 Hosted in Azure(https://leaguemanagerapi.azurewebsites.net/).
 
