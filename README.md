@@ -5,10 +5,11 @@ This sample demonstrates a REST API app for [App Service Web App](https://docs.m
 Tech Used: Node.js, Azure Web Apps, Azure Cosmos DB - Mongo, Mocha/Chai, Open API spec.  
 
 Roadmap: 
-1. Add news section. 
-2. Migrate to Containers based deploy model (Docker, Kubernetes, Terraform)  
-3. GoLang Implementation - Fork
-4. GraphQL Implementation - Fork 
+1. Add news section backend. 
+2. Build Front end. 
+3. Migrate to Containers based deploy model (Docker, Kubernetes, Terraform)  
+4. GoLang Implementation - Fork
+5. GraphQL Implementation - Fork 
 
 Hosted in Azure(https://leaguemanagerapi.azurewebsites.net/).
 
