@@ -9,7 +9,7 @@ Roadmap:
 2. Migrate to Containers based deploy model (Docker, Kubernetes, Terraform)  
 
 Hosted in Azure(https://leaguemanagerapi.azurewebsites.net/).
-Open API(https://app.swaggerhub.com/apis/vvvijaya/FootballManager/0.2.1)
+Open API Spec(https://app.swaggerhub.com/apis/vvvijaya/FootballManager/0.2.1)
 
 # Contributing
 
