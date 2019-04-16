@@ -2,13 +2,14 @@
 
 This sample demonstrates a REST API app for [App Service Web App](https://docs.microsoft.com/azure/app-service-web). This API simulates the backend functionality of a Football focused website which presents news, stats of major soccer teams. 
 
-Tech Used: Node.js, Azure Web Apps, Azure Cosmos DB - Mongo, Mocha/Chai, Open API. 
+Tech Used: Node.js, Azure Web Apps, Azure Cosmos DB - Mongo, Mocha/Chai, Open API spec.  
 
 Roadmap: 
 1. Add news section. 
-2. Migrate to Containers based deploy model. 
+2. Migrate to Containers based deploy model (Docker, Kubernetes, Terraform)  
 
 Hosted in Azure(https://leaguemanagerapi.azurewebsites.net/).
+Open API(https://app.swaggerhub.com/apis/vvvijaya/FootballManager/0.2.1)
 
 # Contributing
 
