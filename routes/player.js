@@ -29,9 +29,11 @@ router.get('/find', urlParser ,(req, res) => {
    var minMatches = parseInt(req.query.minmatches) || 0
    var maxMatches = parseInt(req.query.maxmatches) || 10000
    
-   if(minGoals == null || maxGoals == null || minMatches == null || maxMatches == null)
-   res.status(403).send('Invalid parameter values.');   
-   mongoClient.connect(process.env.DB_CONN,  (err, client) => {
+   if(minGoals <=-1 || maxGoals <= -1 || minMatches <= -1 || maxMatches <= -1)
+   assert.fail('Invalid parameter values.')
+
+   //res.status(403).send('Invalid parameter values.');   
+   mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true},  (err, client) => {
     assert.equal(null, err)
     var db = client.db('LeagueDB')
     var cursor = db.collection('players')
