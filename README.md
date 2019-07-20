@@ -8,8 +8,8 @@ Features Roadmap:
 1. Add news section backend. 
 2. Build Front end. 
 3. Migrate to Containers based deploy model (Docker, Kubernetes, Terraform)  
-4. GoLang Implementation - Fork
-5. GraphQL Implementation - Fork 
+4. GoLang Implementation 
+5. GraphQL Implementation 
 
 Hosted in Azure(https://leaguemanagerapi.azurewebsites.net/).
 
