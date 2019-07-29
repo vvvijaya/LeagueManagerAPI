@@ -25,7 +25,7 @@ var leagueSchema = Schema({
 router.get('/', (req,res) =>{
     var limitRows = parseInt(req.query.limit) || 0   
     
-    mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true}, (err, client) => {
+    /*mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true}, (err, client) => {
         var limitRows = parseInt(req.query.limit) || 0 
         assert.equal(null, err)
         var db = client.db('LeagueDB')
@@ -35,11 +35,28 @@ router.get('/', (req,res) =>{
          res.json(docs)
          client.close()
         })              
-    })
+    })*/
+
+    //using promises and error handling in es6 
+    mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true}).then(client => {
+        var limitRows = parseInt(req.query.limit) || 0 
+        //assert.equal(null, err)
+        var db = client.db('LeagueDB')
+        var cursor = db.collection('league')
+        cursor.find({}, {limit: limitRows})
+        .toArray()
+        .then((docs) => { 
+            res.json(docs)   
+            client.close() 
+         })           
+    }).catch(error => {
+        console.log(error)
+        res.sendStatus(500)
+    })                 
 })
 
 router.post('', (req, res) => {
-    mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true}, (err, client) => {
+    /*mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true}, (err, client) => {
             var db = client.db('LeagueDB')            
             db.collection('league').insertOne(
                 {
@@ -50,8 +67,26 @@ router.post('', (req, res) => {
                     res.status(200).send(result.ops)
                 }
             )                 
+    })*/
+    //using promises and error handling in es6 
+    mongoClient.connect(process.env.DB_CONN, {useNewUrlParser: true})
+    .then(client => {
+        var db = client.db('LeagueDB')            
+        db.collection('league').insertOne(
+            {
+                "name": req.body.name,
+                "country": req.body.country 
+            }
+        )                    
     })
+    .then(res => {          
+        res.sendStatus(200) 
+    })    
+    .catch(err => {
+        console.log(err)
+        res.sendStatus(500)
+    })     
 })
 
 
-module.exports = router
+module.exports = router;
